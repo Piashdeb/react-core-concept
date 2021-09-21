@@ -2,50 +2,67 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-
- const number = 5555;
- const singer = {
-   name: 'Dr. Mahfuz',
-   job: 'Singer'
- }
- const singer2 = {
-   name: 'Eva Rahman',
-   job: 'kokil konthi gaan er pakhi'
- }
-
- const singerStyle = {
-   backgroundColor: 'red',
-   color:'white'
- }
-
-
+  const nayoks = ['Rubel', 'Bapparaz', 'Kuber', 'bappi', 'Shuvo','Amor Sunny']
   return (
     <div className="App">
-      <header className="App-header">
-
-        <h3>Yo Yo react MAMA!!!</h3>
-        <p>Happy Happy react</p>
-        <div className="container">
-          <h3>this is inside my container</h3>
-          <h4>My nunmber is: {number}</h4>
-          <p>Singer is : {singer.name + '' + singer.job}</p>
-          <p style ={singerStyle}  >Real Singer: {singer2.job} </p>
-        </div>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul>{
+        nayoks.map(nayok => <li>{nayok}</li>)
+        }
+      </ul>
+      <Person name = {nayoks[0]} nayeka="Mousumi"></Person>
+      <Person name={nayoks[1]}  nayeka="Cheka"></Person>
+      <Person name={nayoks[2]}  nayeka="Kopila"></Person>
+      
     </div>
   );
+}
+/*
+
+      <Friend phone="01700000" address="noakhali"></Friend>
+      <Friend phone="01700001" address="rongpur"></Friend>
+      <Friend phone="01700002" address="dhaka"></Friend>
+      <Friend phone="01700003" address="Jessore"></Friend>
+<p id="title">Title</p>
+       <Person name = "Rubel" nayeka="Mousumi"></Person>
+      <Person name="BappaRaj" nayeka="Cheka"></Person>
+      <Person name="Kuber" nayeka="Kopila"></Person>
+      {/* <Person></Person>
+      <Person></Person>
+      <Person></Person>} */ 
+ 
+
+function Person(props) {                       // component
+  console.log(props);
+  const person = {
+    backgroundColor: 'skyblue',
+    border: '3px solid lightsalmon',    // ei rokom use kora jay 
+    margin: '20px',
+    borderRadius: '20px'
+  }
+  return (
+
+    // properties = props
+    // style={person}{
+    //   backgroundColor: 'skyblue',
+    //   border: '3px solid lightsalmon',         // style diye o use kora jay 
+    //   margin: '20px',                          // again class diye o use kora jay
+    //   borderRadius: '20px'
+
+    // }
+    <div style={person} >
+      <h1>Name: {props.name}</h1>
+      <h4>Hero Of: {props.nayeka}</h4>
+    </div>
+  )
+}
+function Friend(props){
+  console.log(props);
+  return (
+    <div className="person">
+      <h3>Phone:{props.phone} </h3>
+      <h5>Address: {props.address}</h5>
+    </div>
+  )
 }
 
 export default App;
